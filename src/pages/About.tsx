@@ -16,9 +16,9 @@ export default function AboutPage() {
   return (
     <>
       <SEO
-        title="About — Star Turmeric"
-        description="Star Turmeric is an India-based turmeric exporter working directly with farms in Erode to deliver premium quality to global buyers."
-        ogTitle="About Star Turmeric"
+        title="About — Star Turmerics"
+        description="Star Turmerics is an India-based turmeric exporter working directly with farms in Erode and Salem to deliver premium quality to global buyers."
+        ogTitle="About Star Turmerics"
         ogDescription="An India-based turmeric exporter built on quality, trust and transparency."
         canonical="https://starturmeric.com/about"
       />
@@ -34,10 +34,10 @@ export default function AboutPage() {
                 Trusted Indian turmeric, delivered worldwide.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Star Turmeric is built on three generations of relationships with turmeric growers in
-                Erode, Tamil Nadu — a region known globally for the quality of its rhizomes. We bring
-                that heritage to international buyers with consistent grades, transparent processing
-                and dependable logistics.
+                Star Turmerics is built on three generations of relationships with turmeric growers
+                across Erode and Salem, Tamil Nadu — a region known globally for the quality of its
+                rhizomes. We bring that heritage to international buyers with consistent quality,
+                transparent processing and dependable logistics.
               </p>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function AboutPage() {
                   { label: "Growing region", value: "Erode, TN" },
                   { label: "Export markets", value: "20+ countries" },
                   { label: "Curcumin range", value: "2.5–4.5%" },
-                  { label: "Product varieties", value: "5 grades" },
+                  { label: "Product varieties", value: "5 varieties" },
                 ].map((s) => (
                   <div key={s.label}>
                     <dt className="text-xs uppercase tracking-wider text-muted-foreground">

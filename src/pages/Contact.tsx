@@ -1,16 +1,22 @@
 import { useState, type FormEvent } from "react";
 import { SEO } from "@/components/SEO";
-import { LoaderCircle, Mail, MapPin, Phone, Send } from "lucide-react";
+import { LoaderCircle, Mail, MapPin, Phone, Send, Warehouse } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
-const contactEmail = "starturmericexports@gmail.com";
-const contactPhone = "+91 97908 31644";
-const addressLines = [
-  "Star Turmeric",
-  "#294, 5th Cross Street, Indra Nagar",
-  "Opposite to Veterinary Hospital",
-  "Anaicut Road, Walajapet - 632513",
+const contactEmail = "starturmericserode@gmail.com";
+const contactPhone = "+91 75981 81199";
+const officeAddress = [
+  "Star Turmerics",
+  "6, Muthusamy St, Fort",
+  "Sathy Road",
+  "Erode – 638001",
+];
+const warehouseAddress = [
+  "Star Turmerics, Turmeric Complex",
+  "Site No: 36, Manjal Valaham",
+  "Nasiyanur Road",
+  "Erode – 638108",
 ];
 
 function Field({
@@ -65,6 +71,7 @@ export default function ContactPage() {
       `Company: ${formData.get("company") || ""}`,
       `Email: ${formData.get("email") || ""}`,
       `Country: ${formData.get("country") || ""}`,
+      `Place of business: ${formData.get("place") || ""}`,
       `Product of interest: ${formData.get("product") || ""}`,
       `Estimated volume: ${formData.get("volume") || ""}`,
       "",
@@ -82,9 +89,9 @@ export default function ContactPage() {
   return (
     <>
       <SEO
-        title="Contact — Star Turmeric"
-        description="Get in touch with Star Turmeric for turmeric samples, specifications and quotes. Based in Walajapet, Tamil Nadu — exporting worldwide."
-        ogTitle="Contact Star Turmeric"
+        title="Contact — Star Turmerics"
+        description="Get in touch with Star Turmerics for turmeric samples, specifications and quotes. Based in Erode, Tamil Nadu — exporting worldwide."
+        ogTitle="Contact Star Turmerics"
         ogDescription="Reach our export team for samples, pricing and shipment enquiries."
         canonical="https://starturmeric.com/contact"
       />
@@ -108,7 +115,8 @@ export default function ContactPage() {
           <div className="container-prose grid gap-10 py-20 sm:gap-12 sm:py-24 lg:grid-cols-12">
             <div ref={contactRef} className="space-y-8 lg:col-span-4">
               {[
-                { icon: MapPin, title: "Office", lines: addressLines },
+                { icon: MapPin, title: "Office", lines: officeAddress },
+                { icon: Warehouse, title: "Warehouse", lines: warehouseAddress },
                 { icon: Mail, title: "Email", lines: [contactEmail] },
                 { icon: Phone, title: "Phone", lines: [contactPhone] },
               ].map((c) => (
@@ -154,6 +162,13 @@ export default function ContactPage() {
                     <Field label="Company" name="company" />
                     <Field label="Email" name="email" type="email" required />
                     <Field label="Country" name="country" />
+                  </div>
+                  <div className="mt-5">
+                    <Field
+                      label="Place of business"
+                      name="place"
+                      placeholder="City / region where you operate"
+                    />
                   </div>
                   <div className="mt-5 grid gap-5 sm:grid-cols-2">
                     <Field
@@ -207,7 +222,7 @@ export default function ContactPage() {
                     className="mt-6 rounded-md border border-primary/20 bg-secondary px-4 py-3 text-sm text-primary"
                     role="status"
                   >
-                    Your enquiry is ready in your email app. Send it to reach Star Turmeric directly.
+                    Your enquiry is ready in your email app. Send it to reach Star Turmerics directly.
                   </p>
                 )}
               </form>

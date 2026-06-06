@@ -18,7 +18,7 @@ const steps = [
     n: "02",
     title: "Processing",
     img: processingImg,
-    body: "Cleaning, grading and polishing happen in modern, food-grade facilities. Every batch is sampled and lab-tested for purity, moisture and microbial safety.",
+    body: "Handpicked rhizomes are cleaned, sorted and polished in modern, food-grade facilities. Every batch is sampled and lab-tested for purity, moisture and microbial safety.",
   },
   {
     n: "03",
@@ -72,9 +72,9 @@ export default function ProcessPage() {
   return (
     <>
       <SEO
-        title="Process — Star Turmeric"
-        description="Our turmeric supply chain in three steps: sourcing from Erode farms, processing in modern facilities and exporting worldwide."
-        ogTitle="Our Process — Star Turmeric"
+        title="Process — Star Turmerics"
+        description="Our turmeric supply chain in three steps: handpicked sourcing from Erode and Salem farms, processing in modern facilities and exporting worldwide."
+        ogTitle="Our Process — Star Turmerics"
         ogDescription="Sourcing, processing and global export — a transparent turmeric supply chain."
         canonical="https://starturmeric.com/process"
       />
@@ -122,7 +122,7 @@ export default function ProcessPage() {
               Ready to source premium turmeric?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground">
-              Tell us your grade, volume and destination — we&apos;ll handle the rest.
+              Tell us your variety, volume and destination — we&apos;ll handle the rest.
             </p>
             <Link
               to="/contact"

@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import starLogo from "@/assets/star-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -37,8 +38,15 @@ export function SiteHeader() {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
+          <img
+            src={starLogo}
+            alt="Star Turmerics logo"
+            width={48}
+            height={48}
+            className="h-12 w-12 shrink-0 object-contain"
+          />
           <span className="font-display text-xl font-semibold tracking-tight text-foreground">
-            Star <span className="text-primary">Turmeric</span>
+            Star <span className="text-primary">Turmerics</span>
           </span>
         </Link>
 

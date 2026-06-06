@@ -7,7 +7,7 @@ import heroImg from "@/assets/hero-turmeric.jpg";
 import farmerImg from "@/assets/about-farmer.jpg";
 import fingerImg from "@/assets/product-finger.jpg";
 import bulbImg from "@/assets/product-bulb.jpg";
-import polishedImg from "@/assets/product-polished.jpg";
+import panangaliImg from "@/assets/product-panangali.jpg";
 import sourcingImg from "@/assets/process-sourcing.jpg";
 import processingImg from "@/assets/process-processing.jpg";
 import exportImg from "@/assets/process-export.jpg";
@@ -16,7 +16,7 @@ const trustFeatures = [
   {
     icon: Leaf,
     title: "Direct from farms",
-    body: "Sourced from trusted growers in Erode, the turmeric capital of India.",
+    body: "Sourced from trusted growers across Erode and Salem, the turmeric heartland of India.",
   },
   {
     icon: ShieldCheck,
@@ -31,22 +31,22 @@ const trustFeatures = [
 ];
 
 const productPreviews = [
-  { img: fingerImg, name: "Turmeric Finger", note: "Whole dried rhizomes" },
-  { img: bulbImg, name: "Turmeric Bulb", note: "Mother rhizomes" },
-  { img: polishedImg, name: "Double-Polished", note: "Bright golden finish" },
+  { img: fingerImg, name: "Turmeric Finger", note: "Handpicked whole rhizomes" },
+  { img: bulbImg, name: "Turmeric Bulb", note: "Handpicked mother rhizomes" },
+  { img: panangaliImg, name: "Panangali Turmeric", note: "Premium slender variety" },
 ];
 
 const processSteps = [
   {
     step: "01",
     title: "Sourcing",
-    body: "Hand-selected harvests from partnered farms in Erode, Tamil Nadu.",
+    body: "Handpicked harvests from partnered farms across Erode and Salem, Tamil Nadu.",
     img: sourcingImg,
   },
   {
     step: "02",
     title: "Processing",
-    body: "Cleaning, grading and polishing in hygienic, modern facilities.",
+    body: "Handpicked, cleaned, sorted and polished in hygienic, modern facilities.",
     img: processingImg,
   },
   {
@@ -62,7 +62,7 @@ function HeroSection() {
   const imgRef = useScrollAnimation({ variant: "from-right", threshold: 0.05 });
 
   return (
-    <section className="relative overflow-hidden bg-gradient-soft">
+    <section className="relative overflow-hidden bg-secondary">
       <div className="container-prose grid gap-12 py-16 sm:py-20 lg:grid-cols-12 lg:gap-16 lg:py-28">
         <div ref={textRef} className="lg:col-span-6 lg:pt-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground">
@@ -74,7 +74,7 @@ function HeroSection() {
             <span className="italic text-primary">Global Markets</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            From the heart of Tamil Nadu, Star Turmeric delivers consistent, high-curcumin turmeric
+            From the heart of Tamil Nadu, Star Turmerics delivers consistent, high-curcumin turmeric
             to spice houses, food manufacturers and nutraceutical brands across the world.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -173,7 +173,7 @@ function AboutPreview() {
         />
         <div ref={textRef}>
           <span className="text-xs font-medium uppercase tracking-wider text-primary">
-            About Star Turmeric
+            About Star Turmerics
           </span>
           <h2 className="mt-3 font-display text-3xl text-foreground sm:text-4xl lg:text-5xl">
             Rooted in tradition. Built for global trade.
@@ -330,9 +330,9 @@ export default function HomePage() {
   return (
     <>
       <SEO
-        title="Star Turmeric — Premium Indian Turmeric for Global Markets"
-        description="Star Turmeric supplies premium Indian turmeric — finger, bulb, unpolished, double-polished and Panangali varieties — to global food, spice and nutraceutical markets."
-        ogTitle="Star Turmeric — Premium Indian Turmeric"
+        title="Star Turmerics — Premium Indian Turmeric for Global Markets"
+        description="Star Turmerics supplies premium Indian turmeric — finger, bulb, Panangali, unpolished and double-polished varieties — to global food, spice and nutraceutical markets."
+        ogTitle="Star Turmerics — Premium Indian Turmeric"
         ogDescription="Premium Indian turmeric exported to global markets. Curcumin 2.5% – 4.5%. Direct from Erode farms."
         canonical="https://starturmeric.com/"
       />
