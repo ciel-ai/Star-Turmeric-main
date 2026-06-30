@@ -28,11 +28,11 @@ export function SiteHeader() {
         scrolled ? "shadow-soft" : "shadow-none",
       ].join(" ")}
     >
-      <div className="container-prose flex h-16 items-center justify-between">
+      <div className="container-prose flex h-24 items-center justify-between">
         {/* Logo */}
         <Link
           to="/"
-          className="group flex items-center gap-2"
+          className="group flex items-center gap-3"
           onClick={() => {
             setOpen(false);
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -41,12 +41,17 @@ export function SiteHeader() {
           <img
             src={starLogo}
             alt="Star Turmerics logo"
-            width={48}
-            height={48}
-            className="h-12 w-12 shrink-0 object-contain"
+            width={64}
+            height={64}
+            className="h-16 w-16 shrink-0 object-contain"
           />
-          <span className="font-display text-xl font-semibold tracking-tight text-foreground">
-            Star <span className="text-primary">Turmerics</span>
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+              Star <span className="text-primary">Turmerics</span>
+            </span>
+            <span className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+              Since 1989
+            </span>
           </span>
         </Link>
 
@@ -60,7 +65,7 @@ export function SiteHeader() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className={({ isActive }) =>
                 [
-                  "relative font-display text-[15px] font-bold tracking-tight transition-colors",
+                  "relative font-display text-[20px] font-bold tracking-normal transition-colors",
                   "after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-primary after:transition-all after:duration-300",
                   isActive
                     ? "text-primary after:w-full"
@@ -128,7 +133,7 @@ export function SiteHeader() {
               }}
               className={({ isActive }) =>
                 [
-                  "rounded-md px-2 py-2.5 font-display text-base font-bold tracking-tight transition-colors",
+                  "rounded-md px-2 py-2.5 font-display text-[20px] font-bold tracking-normal transition-colors",
                   isActive
                     ? "bg-secondary text-primary"
                     : "text-foreground hover:bg-secondary hover:text-primary",

@@ -4,41 +4,27 @@ import { ArrowRight } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import fingerImg from "@/assets/product-finger.jpg";
-import bulbImg from "@/assets/product-bulb.jpg";
-import unpolishedImg from "@/assets/product-unpolished.jpg";
-import polishedImg from "@/assets/product-polished.jpg";
+import coconutImg from "@/assets/coconut.jpg";
 import panangaliImg from "@/assets/product-panangali.jpg";
 
 const products = [
   {
     name: "Turmeric Finger",
     img: fingerImg,
-    note: "Handpicked whole dried rhizomes — long, slender pieces ideal for grinding into powder or whole-spice use.",
+    note: "Whole dried turmeric fingers — long, slim pieces that are perfect for grinding into powder or using whole.",
     tags: ["Whole spice", "Powder milling", "Food processing", "Retail packing"],
   },
   {
-    name: "Turmeric Bulb",
-    img: bulbImg,
-    note: "Handpicked round mother rhizomes with deep colour. Preferred for premium powder and oleoresin extraction.",
-    tags: ["Mother rhizome", "High colour", "Oleoresin", "Nutraceutical"],
+    name: "Coconut",
+    img: coconutImg,
+    note: "Clean, sun-dried coconut from South Indian farms — consistent quality, ready for food and retail buyers.",
+    tags: ["Sun-dried", "Food processing", "Retail packing", "Export ready"],
   },
   {
     name: "Panangali Turmeric",
     img: panangaliImg,
-    note: "A premium South Indian variety known for its slender shape, deep colour and high curcumin yield.",
+    note: "A premium South Indian turmeric with a slim shape, deep colour and high curcumin content.",
     tags: ["Premium variety", "High curcumin", "Ayurveda", "Health supplements"],
-  },
-  {
-    name: "Unpolished Turmeric",
-    img: unpolishedImg,
-    note: "Naturally dried rhizomes with their original skin intact. Closest to the raw, traditional form.",
-    tags: ["Natural & raw", "Organic buyers", "Traditional use", "Cosmetics"],
-  },
-  {
-    name: "Double-Polished Turmeric",
-    img: polishedImg,
-    note: "Mechanically polished twice for a clean, bright golden finish — preferred by international retail buyers.",
-    tags: ["Bright finish", "Export ready", "Retail shelf", "Spice mills"],
   },
 ];
 
@@ -94,9 +80,9 @@ export default function ProductsPage() {
     <>
       <SEO
         title="Products — Star Turmerics"
-        description="Turmeric Finger, Bulb, Panangali, Unpolished and Double-Polished varieties from Star Turmerics. Curcumin content 2.5% – 4.5%."
+        description="Turmeric Finger, Coconut and Panangali from Star Turmerics. Curcumin content 2.5% – 4.5%."
         ogTitle="Turmeric Products — Star Turmerics"
-        ogDescription="Five turmeric varieties for global food, spice and nutraceutical buyers."
+        ogDescription="Our core products for global food, spice and nutraceutical buyers."
         canonical="https://starturmeric.com/products"
       />
       <SiteLayout>
@@ -106,7 +92,7 @@ export default function ProductsPage() {
               Products
             </span>
             <h1 className="mt-3 max-w-3xl font-display text-4xl text-foreground sm:text-5xl lg:text-6xl">
-              Five turmeric varieties, crafted for global buyers.
+              Three products, ready for export.
             </h1>
             <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-border bg-background px-5 py-2 shadow-soft">
               <span className="h-2 w-2 rounded-full bg-turmeric" />
@@ -120,7 +106,7 @@ export default function ProductsPage() {
         <section className="border-y border-border bg-background">
           <div ref={summaryRef} className="container-prose grid gap-5 py-10 sm:grid-cols-3">
             {[
-              { label: "Varieties", value: "5 export-ready varieties" },
+              { label: "Products", value: "3 export-ready products" },
               { label: "Curcumin", value: "2.5% - 4.5% batch tested" },
               { label: "Use cases", value: "Food, spice and nutraceutical" },
             ].map((item) => (

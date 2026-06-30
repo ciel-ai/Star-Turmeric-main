@@ -34,10 +34,9 @@ export default function AboutPage() {
                 Trusted Indian turmeric, delivered worldwide.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Star Turmerics is built on three generations of relationships with turmeric growers
-                across Erode and Salem, Tamil Nadu — a region known globally for the quality of its
-                rhizomes. We bring that heritage to international buyers with consistent quality,
-                transparent processing and dependable logistics.
+                For three generations, we&apos;ve worked with turmeric farmers in Erode and Salem,
+                Tamil Nadu — home to some of the world&apos;s best turmeric. We bring that quality to
+                buyers everywhere, with honest processing and reliable delivery.
               </p>
             </div>
           </div>
@@ -110,7 +109,7 @@ export default function AboutPage() {
                   { label: "Growing region", value: "Erode, TN" },
                   { label: "Export markets", value: "20+ countries" },
                   { label: "Curcumin range", value: "2.5–4.5%" },
-                  { label: "Product varieties", value: "5 varieties" },
+                  { label: "Established", value: "1989" },
                 ].map((s) => (
                   <div key={s.label}>
                     <dt className="text-xs uppercase tracking-wider text-muted-foreground">

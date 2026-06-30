@@ -105,8 +105,8 @@ export default function ContactPage() {
               Talk to our export team.
             </h1>
             <p className="mt-6 max-w-2xl text-base text-primary-foreground/70 sm:text-lg">
-              Share your requirement — variety, grade, volume and destination — and we&apos;ll come
-              back with samples and pricing.
+              Tell us what you need — product, quantity and destination. We&apos;ll reply with
+              samples and pricing.
             </p>
           </div>
         </section>
@@ -159,14 +159,15 @@ export default function ContactPage() {
                 <fieldset disabled={isSubmitting} className="mt-6 disabled:opacity-70">
                   <div className="grid gap-5 sm:grid-cols-2">
                     <Field label="Full name" name="name" required />
-                    <Field label="Company" name="company" />
+                    <Field label="Company" name="company" required />
                     <Field label="Email" name="email" type="email" required />
-                    <Field label="Country" name="country" />
+                    <Field label="Country" name="country" required />
                   </div>
                   <div className="mt-5">
                     <Field
                       label="Place of business"
                       name="place"
+                      required
                       placeholder="City / region where you operate"
                     />
                   </div>
@@ -174,22 +175,26 @@ export default function ContactPage() {
                     <Field
                       label="Product of interest"
                       name="product"
-                      placeholder="e.g. Double-polished"
+                      required
+                      placeholder="e.g. Turmeric Finger"
                     />
                     <Field
                       label="Estimated volume"
                       name="volume"
+                      required
                       placeholder="e.g. 1 x 20ft container"
                     />
                   </div>
                   <div className="mt-5">
                     <label className="text-sm font-medium text-foreground" htmlFor="message">
                       Message
+                      <span className="ml-0.5 text-turmeric">*</span>
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       rows={5}
+                      required
                       className="mt-2 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
                       placeholder="Tell us about your requirement..."
                     />

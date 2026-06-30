@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
-import { ArrowRight, Globe2, Leaf, ShieldCheck } from "lucide-react";
+import { ArrowRight, Award, Globe2, Leaf, ShieldCheck } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import heroImg from "@/assets/hero-turmeric.jpg";
 import farmerImg from "@/assets/about-farmer.jpg";
 import fingerImg from "@/assets/product-finger.jpg";
-import bulbImg from "@/assets/product-bulb.jpg";
+import coconutImg from "@/assets/coconut.jpg";
 import panangaliImg from "@/assets/product-panangali.jpg";
 import sourcingImg from "@/assets/process-sourcing.jpg";
 import processingImg from "@/assets/process-processing.jpg";
@@ -15,25 +15,30 @@ import exportImg from "@/assets/process-export.jpg";
 const trustFeatures = [
   {
     icon: Leaf,
-    title: "Direct from farms",
-    body: "Sourced from trusted growers across Erode and Salem, the turmeric heartland of India.",
+    title: "Straight from the farm",
+    body: "Bought directly from trusted farmers in Erode and Salem — India's turmeric belt.",
   },
   {
     icon: ShieldCheck,
-    title: "Quality assured",
-    body: "Lab-tested for curcumin, moisture, purity and microbial safety.",
+    title: "Tested for quality",
+    body: "Every batch is lab-tested for colour, purity and safety.",
   },
   {
     icon: Globe2,
-    title: "Global logistics",
-    body: "Reliable container shipments to ports across Asia, EU and the Americas.",
+    title: "Shipped worldwide",
+    body: "On-time container shipping to Asia, Europe and the Americas.",
   },
 ];
 
 const productPreviews = [
   { img: fingerImg, name: "Turmeric Finger", note: "Handpicked whole rhizomes" },
-  { img: bulbImg, name: "Turmeric Bulb", note: "Handpicked mother rhizomes" },
+  { img: coconutImg, name: "Coconut", note: "Premium dried coconut for export" },
   { img: panangaliImg, name: "Panangali Turmeric", note: "Premium slender variety" },
+];
+
+const certifications = [
+  { title: "Turmeric Board", body: "Registered with the Turmeric Board of India" },
+  { title: "Spices Board", body: "Spices Board India registered exporter" },
 ];
 
 const processSteps = [
@@ -67,15 +72,15 @@ function HeroSection() {
         <div ref={textRef} className="lg:col-span-6 lg:pt-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-turmeric" />
-            Tamil Nadu, India · Exporting worldwide
+            Since 1989 · Tamil Nadu, India · Exporting worldwide
           </span>
           <h1 className="mt-5 font-display text-4xl leading-[1.05] text-foreground sm:text-5xl lg:text-7xl">
             Premium Indian Turmeric for{" "}
             <span className="italic text-primary">Global Markets</span>
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            From the heart of Tamil Nadu, Star Turmerics delivers consistent, high-curcumin turmeric
-            to spice houses, food manufacturers and nutraceutical brands across the world.
+            We supply pure, high-curcumin Indian turmeric to food, spice and supplement buyers
+            around the world — straight from our farms in Tamil Nadu.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Link
@@ -96,7 +101,7 @@ function HeroSection() {
             {[
               { label: "Curcumin", value: "2.5–4.5%" },
               { label: "Markets", value: "20+" },
-              { label: "Varieties", value: "5" },
+              { label: "Since", value: "1989" },
             ].map((stat) => (
               <div key={stat.label}>
                 <dt className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -155,6 +160,44 @@ function TrustStrip() {
   );
 }
 
+function Certifications() {
+  const ref = useScrollAnimation({ stagger: true });
+
+  return (
+    <section className="border-b border-border bg-secondary/40">
+      <div className="container-prose py-12 sm:py-14">
+        <div className="text-center">
+          <span className="text-xs font-medium uppercase tracking-wider text-primary">
+            Certifications
+          </span>
+          <h2 className="mt-2 font-display text-2xl text-foreground sm:text-3xl">
+            Government-recognised, export-ready.
+          </h2>
+        </div>
+        <div
+          ref={ref}
+          className="mx-auto mt-8 flex max-w-2xl flex-wrap items-stretch justify-center gap-4 sm:gap-6"
+        >
+          {certifications.map((c) => (
+            <div
+              key={c.title}
+              className="flex min-w-[220px] flex-1 items-center gap-4 rounded-2xl border border-border bg-background px-5 py-4 shadow-soft"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
+                <Award className="h-6 w-6" />
+              </span>
+              <div>
+                <p className="font-display text-base text-foreground">{c.title}</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">{c.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function AboutPreview() {
   const imgRef = useScrollAnimation<HTMLImageElement>({ variant: "from-left" });
   const textRef = useScrollAnimation({ variant: "from-right" });
@@ -176,12 +219,11 @@ function AboutPreview() {
             About Star Turmerics
           </span>
           <h2 className="mt-3 font-display text-3xl text-foreground sm:text-4xl lg:text-5xl">
-            Rooted in tradition. Built for global trade.
+            Farm-fresh turmeric, trusted worldwide.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-            We work hand-in-hand with farming communities in Tamil Nadu to bring the finest Indian
-            turmeric to international buyers. Every shipment reflects our commitment to quality,
-            transparency and long-term partnerships.
+            We work directly with farmers in Tamil Nadu to bring you the best Indian turmeric. You
+            get the same high quality and honest service on every order.
           </p>
           <Link
             to="/about"
@@ -211,7 +253,7 @@ function ProductsPreview() {
               Our products
             </span>
             <h2 className="mt-3 max-w-2xl font-display text-3xl text-foreground sm:text-4xl lg:text-5xl">
-              Five turmeric varieties, one consistent standard.
+              Three products. One quality standard.
             </h2>
           </div>
           <Link
@@ -262,10 +304,10 @@ function ProcessPreview() {
             Our process
           </span>
           <h2 className="mt-3 font-display text-3xl text-foreground sm:text-4xl lg:text-5xl">
-            From field to global port.
+            From our farms to your port.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            A simple, transparent supply chain — built on three steps and decades of experience.
+            A simple three-step supply chain you can count on, backed by decades of experience.
           </p>
         </div>
 
@@ -309,10 +351,10 @@ function CtaSection() {
       >
         <div className="max-w-xl">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl">
-            Let&apos;s build a reliable turmeric supply for your market.
+            Looking for a reliable turmeric supplier?
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
-            Share your specifications and we&apos;ll get back with samples and pricing.
+            Tell us what you need. We&apos;ll send samples and pricing fast.
           </p>
         </div>
         <Link
@@ -331,7 +373,7 @@ export default function HomePage() {
     <>
       <SEO
         title="Star Turmerics — Premium Indian Turmeric for Global Markets"
-        description="Star Turmerics supplies premium Indian turmeric — finger, bulb, Panangali, unpolished and double-polished varieties — to global food, spice and nutraceutical markets."
+        description="Since 1989, Star Turmerics supplies premium Indian turmeric — Turmeric Finger, Coconut and Panangali — to global food, spice and nutraceutical markets."
         ogTitle="Star Turmerics — Premium Indian Turmeric"
         ogDescription="Premium Indian turmeric exported to global markets. Curcumin 2.5% – 4.5%. Direct from Erode farms."
         canonical="https://starturmeric.com/"
@@ -339,6 +381,7 @@ export default function HomePage() {
       <SiteLayout>
         <HeroSection />
         <TrustStrip />
+        <Certifications />
         <AboutPreview />
         <ProductsPreview />
         <ProcessPreview />

@@ -9,8 +9,13 @@ export function SiteFooter() {
       <div className="container-prose grid gap-10 py-14 md:grid-cols-4 md:py-16">
         <div className="md:col-span-2">
           <Link to="/" className="group inline-flex items-center gap-2">
-            <span className="font-display text-lg font-medium text-primary-foreground">
-              Star Turmerics
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-lg font-medium text-primary-foreground">
+                Star Turmerics
+              </span>
+              <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-turmeric">
+                Since 1989
+              </span>
             </span>
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-primary-foreground/70">
@@ -71,15 +76,9 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h4 className="font-display text-sm font-medium text-primary-foreground">Products</h4>
+          <h4 className="font-display text-sm font-medium text-primary-foreground">Our Products</h4>
           <ul className="mt-4 space-y-2.5 text-sm text-primary-foreground/70">
-            {[
-              "Turmeric Finger",
-              "Turmeric Bulb",
-              "Panangali Turmeric",
-              "Unpolished Turmeric",
-              "Double-Polished",
-            ].map((p) => (
+            {["Turmeric Finger", "Coconut", "Panangali Turmeric"].map((p) => (
               <li key={p}>
                 <Link to="/products" className="transition-colors hover:text-primary-foreground">
                   {p}
