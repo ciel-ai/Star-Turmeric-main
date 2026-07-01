@@ -6,9 +6,15 @@ import {
   TN_SALEM,
   TN_CITIES,
 } from "@/data/tamilNaduMap";
+import { INDIA_VIEWBOX, INDIA_PATH, TN_INSET_PATH, TN_INSET_CENTROID } from "@/data/indiaInset";
 
 const HIGHLIGHT = new Set(["Erode", "Salem"]);
 const MAP_W = Number(TN_VIEWBOX.split(" ")[2]);
+
+// Gentle arc linking the two source districts (the "turmeric belt").
+const BELT_PATH = `M${TN_ERODE[0]},${TN_ERODE[1]} Q${(TN_ERODE[0] + TN_SALEM[0]) / 2},${
+  Math.min(TN_ERODE[1], TN_SALEM[1]) - 42
+} ${TN_SALEM[0]},${TN_SALEM[1]}`;
 
 function Pin({
   point,
@@ -25,7 +31,6 @@ function Pin({
   const lx = anchor === "end" ? x - 22 : x + 22;
   return (
     <g className="text-turmeric">
-      {/* pulsing halo */}
       <circle
         cx={x}
         cy={y}
@@ -34,7 +39,6 @@ function Pin({
         className="map-ping"
         style={{ animationDelay: `${delay}s` }}
       />
-      {/* solid marker */}
       <circle cx={x} cy={y} r={9} fill="currentColor" />
       <circle cx={x} cy={y} r={3.5} fill="#fff" />
       <text
@@ -58,7 +62,14 @@ export function SourcingMap() {
 
   return (
     <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
-      <div className="container-prose grid items-center gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
+      {/* Warm ambient glow for depth */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[-10rem] top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full opacity-50"
+        style={{ background: "radial-gradient(circle, rgba(224,168,74,0.16), transparent 70%)" }}
+      />
+
+      <div className="container-prose relative grid items-center gap-12 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
         {/* Copy */}
         <div ref={textRef} className="lg:col-span-5">
           <span className="text-xs font-medium uppercase tracking-wider text-turmeric">
@@ -103,6 +114,20 @@ export function SourcingMap() {
         {/* Map */}
         <div ref={mapRef} className="lg:col-span-7">
           <div className="relative mx-auto max-w-sm sm:max-w-md">
+            {/* India locator inset */}
+            <div className="absolute left-0 top-0 z-10 w-20 rounded-lg bg-primary-foreground/[0.06] p-2 ring-1 ring-primary-foreground/10 backdrop-blur-sm sm:w-24">
+              <svg viewBox={INDIA_VIEWBOX} className="h-auto w-full" role="img" aria-label="India, with Tamil Nadu highlighted">
+                <path d={INDIA_PATH} fill="#ffffff" fillOpacity={0.14} />
+                <g className="text-turmeric">
+                  <path d={TN_INSET_PATH} fill="currentColor" fillOpacity={0.9} />
+                  <circle cx={TN_INSET_CENTROID[0]} cy={TN_INSET_CENTROID[1]} r={3} fill="#fff" />
+                </g>
+              </svg>
+              <p className="mt-1 text-center text-[9px] font-medium uppercase tracking-[0.15em] text-primary-foreground/45">
+                India
+              </p>
+            </div>
+
             <svg
               viewBox={TN_VIEWBOX}
               className="h-auto w-full"
@@ -114,10 +139,13 @@ export function SourcingMap() {
                   <stop offset="0%" stopColor="currentColor" stopOpacity="0.5" />
                   <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
                 </radialGradient>
+                <filter id="tn-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#04140c" floodOpacity="0.55" />
+                </filter>
               </defs>
 
-              {/* Districts */}
-              <g>
+              {/* Solid landmass (depth via drop shadow) */}
+              <g filter="url(#tn-shadow)">
                 {TN_DISTRICTS.map((d) => {
                   const hi = HIGHLIGHT.has(d.name);
                   return (
@@ -125,11 +153,27 @@ export function SourcingMap() {
                       key={d.name}
                       d={d.path}
                       className={hi ? "text-turmeric" : undefined}
-                      fill={hi ? "currentColor" : "#ffffff"}
-                      fillOpacity={hi ? 0.24 : 0.05}
+                      fill={hi ? "currentColor" : "#0f3a24"}
+                      fillOpacity={hi ? 0.34 : 1}
+                    />
+                  );
+                })}
+              </g>
+
+              {/* District borders — drawn in on scroll */}
+              <g className="map-draw">
+                {TN_DISTRICTS.map((d) => {
+                  const hi = HIGHLIGHT.has(d.name);
+                  return (
+                    <path
+                      key={d.name}
+                      d={d.path}
+                      pathLength={1}
+                      fill="none"
+                      className={hi ? "text-turmeric" : undefined}
                       stroke={hi ? "currentColor" : "#ffffff"}
-                      strokeOpacity={hi ? 0.9 : 0.14}
-                      strokeWidth={hi ? 2.5 : 1.1}
+                      strokeOpacity={hi ? 0.9 : 0.22}
+                      strokeWidth={hi ? 2.6 : 1.2}
                       strokeLinejoin="round"
                     />
                   );
@@ -138,8 +182,41 @@ export function SourcingMap() {
 
               {/* Glow over the highlighted districts */}
               <g className="text-turmeric">
-                <circle cx={TN_ERODE[0]} cy={TN_ERODE[1]} r={150} fill="url(#tn-glow)" opacity={0.7} />
-                <circle cx={TN_SALEM[0]} cy={TN_SALEM[1]} r={140} fill="url(#tn-glow)" opacity={0.7} />
+                <circle cx={TN_ERODE[0]} cy={TN_ERODE[1]} r={150} fill="url(#tn-glow)" opacity={0.65} />
+                <circle cx={TN_SALEM[0]} cy={TN_SALEM[1]} r={140} fill="url(#tn-glow)" opacity={0.65} />
+              </g>
+
+              {/* Turmeric-belt connector */}
+              <g className="text-turmeric">
+                <path
+                  d={BELT_PATH}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeOpacity={0.14}
+                  strokeWidth={14}
+                  strokeLinecap="round"
+                />
+                <path
+                  d={BELT_PATH}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeOpacity={0.85}
+                  strokeWidth={4.5}
+                  strokeLinecap="round"
+                  strokeDasharray="0.5 14"
+                />
+                <text
+                  x={(TN_ERODE[0] + TN_SALEM[0]) / 2}
+                  y={Math.min(TN_ERODE[1], TN_SALEM[1]) - 52}
+                  textAnchor="middle"
+                  fill="currentColor"
+                  fillOpacity={0.95}
+                  fontSize={19}
+                  letterSpacing={3}
+                  className="font-sans"
+                >
+                  TURMERIC BELT
+                </text>
               </g>
 
               {/* Context cities */}
