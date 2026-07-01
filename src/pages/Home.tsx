@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { ArrowRight, Award, Globe2, Leaf, ShieldCheck } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { SourcingMap } from "@/components/SourcingMap";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import heroImg from "@/assets/hero-turmeric.jpg";
 import farmerImg from "@/assets/about-farmer.jpg";
@@ -383,6 +384,7 @@ export default function HomePage() {
         <TrustStrip />
         <Certifications />
         <AboutPreview />
+        <SourcingMap />
         <ProductsPreview />
         <ProcessPreview />
         <CtaSection />
